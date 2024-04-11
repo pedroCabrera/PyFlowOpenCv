@@ -1,4 +1,4 @@
-from Qt import QtCore , QtWidgets , QtGui
+from qtpy import QtCore , QtWidgets , QtGui
 from PyFlow.UI.Canvas.UICommon import *
 from PyFlow.Core.Common import push,getConnectedPins
 from PyFlow.Packages.PyFlowOpenCv.UI.UIOpenCvBaseNode import UIOpenCvBaseNode
@@ -65,8 +65,9 @@ class PainterWidget(QtWidgets.QGraphicsPixmapItem):
         pix = self.pixmap()
         self.painter.begin(pix)        
         #TODO:: ADD BRUSHES
+        current_pos = self.mapToScene(event.pos())
         if self._manipulationMode == self._MANIP_MODE_PAINT:
-            current_pos = self.mapToScene(event.pos())
+            
             self.painter.setRenderHints(QtGui.QPainter.Antialiasing, True)
             self.painter.setPen(self.DrawingPen)
             self.painter.drawLine(self.previous_pos, current_pos)
