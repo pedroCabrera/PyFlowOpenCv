@@ -1,4 +1,3 @@
-from nine import str
 from qtpy import QtGui
 
 from PyFlow.UI.Tool.Tool import DockTool
